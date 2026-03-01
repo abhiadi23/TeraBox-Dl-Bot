@@ -5,7 +5,7 @@ from config import API_ID, API_HASH, BOT_TOKEN, SESSION_STRING
 logger = logging.getLogger(__name__)
 
 
-def build_app() -> Client:
+def main() -> Client:
     """Build and configure the Pyrogram Client."""
     
     plugins = dict(root="bot")  # This will load handlers from cmds.py
@@ -20,4 +20,6 @@ def build_app() -> Client:
     )
     
     logger.info("Bot client configured successfully")
-    return app
+
+if __name__ == "__main__":
+    main()
