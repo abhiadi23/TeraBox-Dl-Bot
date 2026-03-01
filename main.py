@@ -1,19 +1,23 @@
 import logging
-from config import LOG_LEVEL
-from bot import build_app
+from pyrogram import Client
+from config import API_ID, API_HASH, BOT_TOKEN, SESSION_STRING
 
-logging.basicConfig(
-    format="%(asctime)s | %(levelname)-8s | %(name)s — %(message)s",
-    level=getattr(logging, LOG_LEVEL, logging.INFO),
-)
 logger = logging.getLogger(__name__)
 
 
-def main() -> None:
-    logger.info("Starting TeraBox Downloader Bot…")
-    app = build_app()
-    app.run_polling()
-
-
-if __name__ == "__main__":
-    main()
+def build_app() -> Client:
+    """Build and configure the Pyrogram Client."""
+    
+    plugins = dict(root="bot")  # This will load handlers from cmds.py
+    
+    app = Client(
+        name="terabox_bot",
+        api_id=API_ID,
+        api_hash=API_HASH,
+        bot_token=BOT_TOKEN,
+        plugins=plugins,
+        workdir=".",
+    )
+    
+    logger.info("Bot client configured successfully")
+    return app
