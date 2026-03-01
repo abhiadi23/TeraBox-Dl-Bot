@@ -10,7 +10,7 @@ def main() -> None:
     
     plugins = dict(root="bot")  # Load handlers from bot/ directory
     
-    app = Client(
+    bot = Client(
         name="terabox_bot",
         api_id=API_ID,
         api_hash=API_HASH,
@@ -23,7 +23,7 @@ def main() -> None:
     
     try:
         logger.info("Starting bot...")
-        app.run()  # This actually starts the bot
+        bot.run()  # This actually starts the bot
     except KeyboardInterrupt:
         logger.info("Bot stopped by user")
     finally:
