@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BOT_TOKEN: str        = os.environ["BOT_TOKEN", "8598064539:AAFFDzeNlqPAOdhTvGIizQ9eL2Wp9Tf9jqQ"]
-NDUS_COOKIE: str      = os.environ["NDUS_COOKIE"]
+BOT_TOKEN: str        = os.environ("BOT_TOKEN", "8598064539:AAFFDzeNlqPAOdhTvGIizQ9eL2Wp9Tf9jqQ")
+NDUS_COOKIE: str      = os.environ("NDUS_COOKIE")
 
 API_ID: int | None    = int(os.environ["API_ID", "27322718"]) if os.getenv("API_ID") else None
 API_HASH: str | None  = os.getenv("API_HASH", "4f6d1b67cf101aea5cf0536885aa1b82")
