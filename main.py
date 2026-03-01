@@ -1,14 +1,14 @@
 import logging
 from pyrogram import Client
-from config import API_ID, API_HASH, BOT_TOKEN, SESSION_STRING
+from config import API_ID, API_HASH, BOT_TOKEN
 
 logger = logging.getLogger(__name__)
 
 
-def main() -> Client:
+def main() -> None:
     """Build and configure the Pyrogram Client."""
     
-    plugins = dict(root="bot")  # This will load handlers from cmds.py
+    plugins = dict(root="bot")  # Load handlers from bot/ directory
     
     app = Client(
         name="terabox_bot",
@@ -20,6 +20,15 @@ def main() -> Client:
     )
     
     logger.info("Bot client configured successfully")
+    
+    try:
+        logger.info("Starting bot...")
+        app.run()  # This actually starts the bot
+    except KeyboardInterrupt:
+        logger.info("Bot stopped by user")
+    finally:
+        logger.info("Bot shutdown complete")
+
 
 if __name__ == "__main__":
     main()
